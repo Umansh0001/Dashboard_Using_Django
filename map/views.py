@@ -10,7 +10,6 @@ def upload_file(request):
         if form.is_valid():
             file = request.FILES['file']
             data = pd.read_excel(file)
-cd
             required_columns = ['application_id', 'loan_account_number', 'product', 'address', 'area_type', 'state', 'pincode', 'latitude', 'longitude']
             if not all(column in data.columns for column in required_columns):
                 missing_columns = [column for column in required_columns if column not in data.columns]
