@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pincode Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+        }
+        .search-bar {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 0 4px 4px 0;
+            color: white;
+            cursor: pointer;
+            outline: none;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+        .map-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .map {
+            width: 80%;
+            height: 60vh;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Pincode Search</h1>
+    </div>
+    <div class="container">
+        <div class="search-bar">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="pincode" placeholder="Enter pincode">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="map-container">
+        <div class="map">
+            {% if map %}
+                {{ map|safe }}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
